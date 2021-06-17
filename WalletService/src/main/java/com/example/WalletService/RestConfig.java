@@ -19,7 +19,7 @@ import java.util.ArrayList;
 @EnableSwagger2
 public class RestConfig {
 
-    private static final String BASE_PACKAGE = "com.shashi.walletservice.Controller";
+    private static final String BASE_PACKAGE = "com.example.walletservice.Controller";
     private ObjectMapper jacksonObjectMapper() {
         return new ObjectMapper()
                 .setPropertyNamingStrategy(PropertyNamingStrategy.CAMEL_CASE_TO_LOWER_CASE_WITH_UNDERSCORES)
