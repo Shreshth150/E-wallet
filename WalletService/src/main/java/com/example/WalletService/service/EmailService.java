@@ -4,27 +4,20 @@ import com.example.WalletService.Util.EmailUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.Objects;
-import java.util.Properties;
-
-import javax.mail.Authenticator;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import java.util.Date;
-
-import javax.mail.Message;
-import javax.mail.Multipart;
-import javax.mail.Transport;
+import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import java.io.IOException;
+import java.util.Date;
+import java.util.Objects;
+import java.util.Properties;
 
 public class EmailService {
     private static final Logger logger = LoggerFactory.getLogger(EmailService.class);
-    public static  final String FROM_EMAIL = "from@gmail.com"; //requires valid gmail id
-    public static final String PASSWORD = "yourGmailPassword"; // correct password for gmail id
+    public static  final String FROM_EMAIL = "support@solruf.com"; //requires valid gmail id
+    public static final String PASSWORD = "support@12345"; // correct password for gmail id
     public static void sendEmail(String toEmail)
     {
         //final String toEmail = "umangd98@gmail.com"; // can be any email id
@@ -89,8 +82,9 @@ public class EmailService {
             msg.setContent(multipart);
             // sends the e-mail
             Transport transport = session.getTransport("smtp");
-            transport.connect("smtp.gmail.com", FROM_EMAIL, PASSWORD);
+            transport.connect("mail.solruf.com", FROM_EMAIL, PASSWORD);
             transport.sendMessage(msg, msg.getAllRecipients());
+
             transport.close();
         }
         catch (Exception e)
@@ -101,13 +95,13 @@ public class EmailService {
     private static Properties getProperties()
     {
         Properties properties = new Properties();
-        properties.put("mail.smtp.host", "smtp.gmail.com");
-        properties.put("mail.smtp.socketFactory.port", "465");
+        properties.put("mail.smtp.host", "mail.solruf.com");
+        properties.put("mail.smtp.socketFactory.port", "587");
         properties.put("mail.smtp.socketFactory.class",
                 "javax.net.ssl.SSLSocketFactory");
         properties.put("mail.smtp.auth", "true");
-        properties.put("mail.smtp.port", "465");
-        properties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+        properties.put("mail.smtp.port", "587");
+        properties.put("mail.smtp.ssl.trust", "mail.solruf.com");
         return properties;
     }
     private static Authenticator  getAuthenticator()
