@@ -2,11 +2,19 @@ package com.example.WalletService.Util;
 
 import com.example.WalletService.Model.Wallet;
 
+import java.util.Objects;
+
 public class WalletValidator {
     public boolean validateWalletRequest(Wallet wallet){
-        /*
-        Write your logic to implement validation
-         */
-        return true;
+
+        if (Objects.isNull(wallet)){
+            return false;
+        }else if (wallet.getIs_active() != true){
+            return false;
+        }else {
+            return true;
+        }
+
+
     }
 }
