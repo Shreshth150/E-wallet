@@ -1,22 +1,14 @@
 package com.example.WalletService.Util;
 
-import java.io.UnsupportedEncodingException;
-import java.util.Date;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import javax.activation.DataHandler;
-import javax.activation.DataSource;
-import javax.activation.FileDataSource;
-import javax.mail.BodyPart;
+
 import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Multipart;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
+import java.util.Date;
 public class EmailUtil {
     private static final Logger logger = LoggerFactory.getLogger(EmailUtil.class);
     /**
@@ -35,9 +27,9 @@ public class EmailUtil {
             msg.addHeader("format", "flowed");
             msg.addHeader("Content-Transfer-Encoding", "8bit");
 
-            msg.setFrom(new InternetAddress("umangd98@gmail.com", "NoReply-JD"));
+            msg.setFrom(new InternetAddress("Shreshthasrivastav150@gmail.com", "NoReply-JD"));
 
-            msg.setReplyTo(InternetAddress.parse("umangd98@gmail.com", false));
+            msg.setReplyTo(InternetAddress.parse("Shreshthasrivastav150@gmail.com", false));
 
             msg.setSubject(subject, "UTF-8");
 
