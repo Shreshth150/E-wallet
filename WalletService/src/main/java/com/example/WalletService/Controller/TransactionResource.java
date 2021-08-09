@@ -1,13 +1,10 @@
 package com.example.WalletService.Controller;
 
-import com.example.WalletService.Model.AddBalanceDetails;
-import com.example.WalletService.Model.Transaction;
-import com.example.WalletService.Model.User;
-import com.example.WalletService.Model.Wallet;
+import com.example.WalletService.Model.*;
 import com.example.WalletService.Repository.TransactionRepository;
 import com.example.WalletService.Repository.WalletRepository;
 import com.example.WalletService.Util.TransactionValidator;
-import com.example.WalletService.Util.WalletValidator;
+import com.example.WalletService.Util.*;
 import com.example.WalletService.exception.TransactionBadRequest;
 import com.example.WalletService.service.EmailService;
 import com.example.WalletService.service.UserService;
@@ -42,7 +39,6 @@ public class TransactionResource {
     @PostMapping("/sendMoney")
     //return 201 instead of 200
     @ResponseStatus(HttpStatus.CREATED)
-
     Transaction addBal(@RequestBody Transaction transaction) throws Exception {
 
         if(!validator.validateRequest(transaction)){
@@ -138,7 +134,7 @@ public class TransactionResource {
             fw.flush();
             fw.close();
             logger.info("CSV File is created successfully.");
-            EmailService.sendEmailWithAttachments("","",user1.getEmail(),"","to@gmail.com","","",filename);
+            EmailService.sendEmailWithAttachments("smtp.gmail.com","465","support@solruf.com","support@12345",user1.getEmail(),"","",filename);
         } catch (Exception e) {
             e.printStackTrace();
         }
